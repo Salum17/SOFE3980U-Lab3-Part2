@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  creationTimestamp: "2025-03-02T19:18:55Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: binarycalculator-deployment
+  name: binarycalculator-service
+  namespace: default
+  resourceVersion: "4757519"
+  uid: 24dd7480-02c1-4e41-b422-2843721c6659
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 34.118.236.98
+  clusterIPs:
+  - 34.118.236.98
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - nodePort: 32512
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: binarycalculator-deployment
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.203.24.208
+      ipMode: VIP
